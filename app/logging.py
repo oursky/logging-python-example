@@ -1,15 +1,16 @@
 from logging import Formatter, Handler, NOTSET
+from datetime import datetime
 
 
+LOG_RECORD_KEY = "slog"
 """
 LOG_RECORD_KEY is the attribute name of where to store a Slog in a LogRecord.
 """
-LOG_RECORD_KEY = "slog"
 
+MESSAGE_KEY = "message"
 """
 MESSAGE_KEY is the key to store the original message of a LogRecord in a Slog.
 """
-MESSAGE_KEY = "message"
 
 
 class SlogFormatter(Formatter):
@@ -27,12 +28,11 @@ class SlogFormatter(Formatter):
         """
         Format as RFC3339.
         """
-        from datetime import datetime
         dt = datetime.utcfromtimestamp(record.created)
         return dt.isoformat(timespec="milliseconds") + "Z"
 
 
-class Slog(object):
+class Slog:
     def __init__(self, dict_):
         self.dict_ = dict_
 
