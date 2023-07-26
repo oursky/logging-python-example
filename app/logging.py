@@ -1,6 +1,7 @@
-from logging import Formatter, Handler, NOTSET
+import json
+import urllib.request
 from datetime import datetime
-
+from logging import NOTSET, Formatter, Handler
 
 LOG_RECORD_KEY = "slog"
 """
@@ -99,8 +100,6 @@ class SlackHandler(Handler):
 
     def emit(self, record):
         try:
-            import urllib.request
-            import json
             data = json.dumps({"text": record.message}).encode()
             r = urllib.request.Request(
                 self.url,

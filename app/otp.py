@@ -5,6 +5,7 @@ logger = logging.getLogger(__name__)
 # Create another logger specifically.
 otpLogger = logging.getLogger("testing.otp")
 
+
 def otp() -> str:
     logger.info("generate code")
     code = "123456"

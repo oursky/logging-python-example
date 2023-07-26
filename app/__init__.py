@@ -1,9 +1,8 @@
 from flask import Flask
 
-from .root import root
-from .payment import payment
 from .otp import otp
-
+from .payment import payment
+from .root import root
 
 app = Flask("app")
 app.add_url_rule("/", None, root)

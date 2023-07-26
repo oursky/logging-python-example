@@ -2,7 +2,6 @@ import logging
 
 from .logging import slog
 
-
 logger = logging.getLogger(__name__)
 
 
